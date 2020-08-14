@@ -1,8 +1,8 @@
-const router = require('express').Router();
+const expressRouter = require('express').Router();
 
 let User = require('../schemas/userSchema');
 
-router.route('/users').get(async (req,res) =>{
+expressRouter.get('/',async (req,res) => {
     let users = await User.find()
     if (users.length > 0) {
         res.status(200).json(users)
@@ -14,5 +14,17 @@ router.route('/users').get(async (req,res) =>{
     
 
 })
+expressRouter.post('/',async (req,res) => {
+    let users = req.body
+    if (users.length > 0) {
+        res.status(200).json(users)
 
-module.export = router;
+    }
+    else {
+        res.status(404).json({ message: 'Nenhum dado encontrado' })
+    }
+    
+
+})
+
+module.exports = expressRouter;

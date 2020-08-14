@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
-const USER = require('./src/routes/routes')
+const expressRouter = require('./src/routes/routes')
 
 app.use(cors());
 app.use(express.json());
@@ -21,7 +21,7 @@ connection.once('open',() => {
 })
 connection.on('error',console.error.bind(console,"Não foi possivel conectar"))
 
-app.use('/users', USER)
+app.use('/users', expressRouter)
 
 
 
