@@ -25,6 +25,6 @@ app.use('/users', expressRouter)
 
 
 
-app.listen(PORT,() =>{
+app.listen(process.env.PORT || 3000,() =>{
     console.log(`EbbiBack is on in port ${PORT}`)
 })
