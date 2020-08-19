@@ -1,30 +1,17 @@
-const express = require( 'express');
-const cors = require('cors');
-const mongoose =require( 'mongoose');
+const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
-require('dotenv').config();
+const getRoutes = require('./src/routes/getRoutes/routes')
+const postRoutes = require('./src/routes/postRoutes/routes')
+const bodyParser = require('body-parser')
+const cors = require('cors');
 
-const expressRouter = require('./src/routes/routes')
-
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json());
 app.use(cors());
-app.use(express.json());
+
+app.use('/', getRoutes)
+app.use('/', postRoutes)
 
 
-
-const uri = process.env.DB_URI;
-mongoose.connect(uri, { useNewUrlParser: true ,useUnifiedTopology: true});
-
-const connection = mongoose.connection;
-connection.once('open',() => {
-    console.log('MongoDB Connected')
-})
-connection.on('error',console.error.bind(console,"Não foi possivel conectar"))
-
-app.use('/users', expressRouter)
-
-
-
-app.listen(process.env.PORT || 3000,() =>{
-    console.log(`EbbiBack is on in port ${PORT}`)
-})
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`EbbiBack is on in port ${PORT}`))
