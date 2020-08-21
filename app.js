@@ -13,5 +13,5 @@ app.use('/', getRoutes)
 app.use('/', postRoutes)
 
 
-const PORT = process.env.PORT||3000
+const PORT = process.env.PORT
 app.listen(PORT, () => console.log(`EbbiBack is on in port ${PORT}`))
