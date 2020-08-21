@@ -18,7 +18,7 @@ router.post('/signup', async (req,res)=> {
   
     const token = uuid.v4();
     const newUser = new User({
-        username : toLow,
+        username : username,
         password: password,
         token : token
     });
