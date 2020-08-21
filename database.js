@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 require('dotenv/config');
-const uri = process.env.DB_URI;
-mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const database = mongoose.connection;
-database.once('open', () => console.log('MongoDB connected'))
-database.on('error', console.error.bind(console, "Couldn't connect to database"))
+
+database.once('open', () => console.log('MongoDB connected'));
+database.on('error', console.error.bind(console, "Couldn't connect to database"));
 
 module.exports = database
