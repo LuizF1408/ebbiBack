@@ -30,7 +30,7 @@ router.post('/signup',async(req,res)=> {
 
     newUser.save()
     .then(()=>{
-        res.status(201).json({message:'Token gerado :',token: token})
+        res.status(201).json({message:'Usuário Cadastrado :'})
     })
     .catch((error)=>{
         res.status(400).json({message: error.message});
