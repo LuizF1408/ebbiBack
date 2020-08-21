@@ -40,6 +40,7 @@ router.post('/newCard', async (req, res) => {
             backSide: req.body.cards[i].back
         }));
     }
+    
     const newDeck = new Deck({
         categorie: req.body.categorie,
         name: req.body.name,
@@ -47,12 +48,13 @@ router.post('/newCard', async (req, res) => {
         image: req.body.image,
         cards: card
     });
+
     try {
         newDeck.save();
         res.status(201).json({ message: 'Card created successfully' });
     } catch (error) {
         res.status(400).json({ message: error.message });
-    }
-})
+    };
+});
 
 module.exports = router
