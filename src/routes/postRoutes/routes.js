@@ -3,8 +3,8 @@ const uuid = require ('uuid');
 const express = require('express');
 const router = express.Router();
 
-const User = require('../../schemas/userSchema');
-const { Deck, Card } = require('../../schemas/dataSchema');
+const User = require('../../models/userSchema');
+const { Deck, Card } = require('../../models/dataSchema');
 
 router.post('/signup', async (req,res)=> {
     const username = req.body.username;
@@ -40,7 +40,7 @@ router.post('/newCard', async (req, res) => {
             backSide: req.body.cards[i].back
         }));
     }
-    
+
     const newDeck = new Deck({
         categorie: req.body.categorie,
         name: req.body.name,

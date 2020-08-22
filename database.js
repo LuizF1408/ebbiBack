@@ -8,4 +8,4 @@ const database = mongoose.connection;
 database.once('open', () => console.log('MongoDB connected'));
 database.on('error', console.error.bind(console, "Couldn't connect to database"));
 
-module.exports = database
+module.exports = database 
