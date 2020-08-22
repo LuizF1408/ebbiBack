@@ -4,7 +4,7 @@ const router = express.Router()
 
 const User = require('../../schemas/userSchema');
 
-router.get('/seeAllCards', async (req, res) => {
+router.get('/seeAllUsers', async (req, res) => {
     const users = await User.find()
     if (users.length > 0) {
         res.status(200).json(users)
